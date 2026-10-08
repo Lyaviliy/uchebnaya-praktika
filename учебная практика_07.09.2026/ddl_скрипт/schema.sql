@@ -43,11 +43,11 @@ CREATE TABLE partners (
     partner_type_id INT          NOT NULL,
     name            VARCHAR(255) NOT NULL,
     inn             VARCHAR(12)  NOT NULL UNIQUE,
-    director_name   VARCHAR(255) NOT NULL,
+    director_name   VARCHAR(255),                       -- может быть неизвестен
     email           VARCHAR(255) NOT NULL UNIQUE,
-    phone           VARCHAR(20)  NOT NULL,
-    legal_address   VARCHAR(500) NOT NULL,
-    rating          INT          NOT NULL DEFAULT 0 CHECK (rating >= 0),
+    phone           VARCHAR(20),                        -- может отсутствовать
+    legal_address   VARCHAR(500),                       -- может быть неизвестен
+    rating          DECIMAL(3,1) CHECK (rating BETWEEN 0 AND 10),
 
     -- Нельзя удалить тип, пока есть партнёры этого типа
     CONSTRAINT fk_partners_partner_type
@@ -77,8 +77,9 @@ CREATE TABLE sales_history (
     id         SERIAL PRIMARY KEY,
     partner_id INT    NOT NULL,
     product_id INT    NOT NULL,
-    quantity   INT    NOT NULL CHECK (quantity > 0),
-    sale_date  DATE   NOT NULL,
+    quantity     INT           NOT NULL CHECK (quantity > 0),
+    total_amount DECIMAL(12,2) NOT NULL CHECK (total_amount >= 0),
+    sale_date    DATE          NOT NULL,
 
     -- Удалили партнёра -> его история продаж удаляется вместе с ним
     CONSTRAINT fk_sales_history_partner

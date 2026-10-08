@@ -21,11 +21,11 @@ ER-диаграмма: [er_diagram.pdf](er_diagram.pdf) (исходник: `er_d
 | partner_type_id | INT | NOT NULL, FK → partner_types(id) |
 | name | VARCHAR(255) | NOT NULL |
 | inn | VARCHAR(12) | NOT NULL, UNIQUE |
-| director_name | VARCHAR(255) | NOT NULL |
+| director_name | VARCHAR(255) | — (может быть неизвестен) |
 | email | VARCHAR(255) | NOT NULL, UNIQUE |
-| phone | VARCHAR(20) | NOT NULL |
-| legal_address | VARCHAR(500) | NOT NULL |
-| rating | INT | NOT NULL, CHECK (rating >= 0) |
+| phone | VARCHAR(20) | — (может отсутствовать) |
+| legal_address | VARCHAR(500) | — (может быть неизвестен) |
+| rating | DECIMAL(3,1) | CHECK (rating BETWEEN 0 AND 10) |
 
 ### product_types — типы продукции
 | Поле | Тип | Ограничения |
@@ -40,7 +40,7 @@ ER-диаграмма: [er_diagram.pdf](er_diagram.pdf) (исходник: `er_d
 | product_type_id | INT | NOT NULL, FK → product_types(id) |
 | article | VARCHAR(50) | NOT NULL, UNIQUE |
 | name | VARCHAR(255) | NOT NULL |
-| min_price | NUMERIC(10,2) | NOT NULL, CHECK (min_price >= 0) |
+| min_price | DECIMAL(10,2) | NOT NULL, CHECK (min_price >= 0) |
 
 ### sales_history — история продаж (отгрузок)
 | Поле | Тип | Ограничения |
@@ -49,6 +49,7 @@ ER-диаграмма: [er_diagram.pdf](er_diagram.pdf) (исходник: `er_d
 | partner_id | INT | NOT NULL, FK → partners(id) |
 | product_id | INT | NOT NULL, FK → products(id) |
 | quantity | INT | NOT NULL, CHECK (quantity > 0) |
+| total_amount | DECIMAL(12,2) | NOT NULL, CHECK (total_amount >= 0) |
 | sale_date | DATE | NOT NULL |
 
 ## Связи

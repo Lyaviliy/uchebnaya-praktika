@@ -17,11 +17,11 @@ digraph ER {
     <tr><td port="type">FK</td><td>partner_type_id</td><td>INT NOT NULL</td></tr>
     <tr><td></td><td>name</td><td>VARCHAR(255) NOT NULL</td></tr>
     <tr><td>UQ</td><td>inn</td><td>VARCHAR(12) NOT NULL</td></tr>
-    <tr><td></td><td>director_name</td><td>VARCHAR(255) NOT NULL</td></tr>
+    <tr><td></td><td>director_name</td><td>VARCHAR(255)</td></tr>
     <tr><td>UQ</td><td>email</td><td>VARCHAR(255) NOT NULL</td></tr>
-    <tr><td></td><td>phone</td><td>VARCHAR(20) NOT NULL</td></tr>
-    <tr><td></td><td>legal_address</td><td>VARCHAR(500) NOT NULL</td></tr>
-    <tr><td></td><td>rating</td><td>INT NOT NULL (≥0)</td></tr>
+    <tr><td></td><td>phone</td><td>VARCHAR(20)</td></tr>
+    <tr><td></td><td>legal_address</td><td>VARCHAR(500)</td></tr>
+    <tr><td></td><td>rating</td><td>DECIMAL(3,1) (0..10)</td></tr>
   </table>>];
 
   product_types [label=<
@@ -38,7 +38,7 @@ digraph ER {
     <tr><td port="type">FK</td><td>product_type_id</td><td>INT NOT NULL</td></tr>
     <tr><td>UQ</td><td>article</td><td>VARCHAR(50) NOT NULL</td></tr>
     <tr><td></td><td>name</td><td>VARCHAR(255) NOT NULL</td></tr>
-    <tr><td></td><td>min_price</td><td>NUMERIC(10,2) NOT NULL (≥0)</td></tr>
+    <tr><td></td><td>min_price</td><td>DECIMAL(10,2) NOT NULL (≥0)</td></tr>
   </table>>];
 
   sales_history [label=<
@@ -48,6 +48,7 @@ digraph ER {
     <tr><td port="partner">FK</td><td>partner_id</td><td>INT NOT NULL</td></tr>
     <tr><td port="product">FK</td><td>product_id</td><td>INT NOT NULL</td></tr>
     <tr><td></td><td>quantity</td><td>INT NOT NULL (&gt;0)</td></tr>
+    <tr><td></td><td>total_amount</td><td>DECIMAL(12,2) NOT NULL (≥0)</td></tr>
     <tr><td></td><td>sale_date</td><td>DATE NOT NULL</td></tr>
   </table>>];
 
