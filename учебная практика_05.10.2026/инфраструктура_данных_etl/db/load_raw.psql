@@ -1,0 +1,14 @@
+-- load_raw.psql — загрузка сырых файлов в staging через psql (альтернатива npm run db:init)
+-- Запуск из папки проекта:
+--   psql -U postgres -d praktika -f db/schema.sql
+--   psql -U postgres -d praktika -f db/staging.sql
+--   psql -U postgres -d praktika -f db/load_raw.psql
+--   psql -U postgres -d praktika -f db/etl.sql
+
+\copy staging.partners_raw      FROM 'data/partners_raw.csv'      WITH (FORMAT csv, HEADER true, ENCODING 'UTF8')
+
+-- products_raw.csv: кодировка Windows-1251, а в «Монитор 27"» неэкранированная кавычка,
+-- на которой строгий режим CSV падает. Грузим в текстовом режиме, кавычки снимает etl.sql
+\copy staging.products_raw      FROM 'data/products_raw.csv'      WITH (FORMAT text, DELIMITER ',', HEADER true, ENCODING 'WIN1251')
+
+\copy staging.sales_history_raw FROM 'data/sales_history_raw.csv' WITH (FORMAT csv, HEADER true, ENCODING 'UTF8')

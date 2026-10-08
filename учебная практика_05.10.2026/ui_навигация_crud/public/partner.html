@@ -1,0 +1,81 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!-- PartnerEditWindow — форма добавления/редактирования партнёра.
+       Заголовок уточняется скриптом: [Добавление] или [Редактирование] -->
+  <title>CRM: Карточка партнера</title>
+  <link rel="icon" type="image/svg+xml" href="resources/icon.svg">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header class="app-header">
+    <img class="app-logo" src="resources/logo.svg" alt="Логотип компании">
+    <h1 class="app-title" id="form-title">Карточка партнера</h1>
+  </header>
+
+  <main class="app-main">
+    <form class="partner-form" id="partner-form" novalidate>
+      <label class="field">
+        <span class="field__label">Наименование <span class="field__required">*</span></span>
+        <input class="field__input" name="name" type="text" maxlength="255" placeholder="Например: Чистый Дом" required>
+      </label>
+
+      <label class="field">
+        <span class="field__label">Тип партнера <span class="field__required">*</span></span>
+        <select class="field__input" name="partnerTypeId" required>
+          <option value="">Загрузка…</option>
+        </select>
+      </label>
+
+      <label class="field">
+        <span class="field__label">ИНН <span class="field__required">*</span></span>
+        <input class="field__input" name="inn" type="text" inputmode="numeric" maxlength="12"
+               placeholder="10 или 12 цифр" title="ИНН организации: 10 цифр, ИП: 12 цифр" required>
+      </label>
+
+      <label class="field">
+        <span class="field__label">Рейтинг</span>
+        <input class="field__input" name="rating" type="text" inputmode="numeric" maxlength="4"
+               placeholder="Целое число от 0, например 7" title="Только целое неотрицательное число, без точек и запятых">
+      </label>
+
+      <label class="field">
+        <span class="field__label">Адрес</span>
+        <input class="field__input" name="legalAddress" type="text" maxlength="500"
+               placeholder="г. Москва, ул. Лесная, д. 5">
+      </label>
+
+      <label class="field">
+        <span class="field__label">ФИО директора</span>
+        <input class="field__input" name="directorName" type="text" maxlength="255"
+               placeholder="Иванов Иван Иванович">
+      </label>
+
+      <label class="field">
+        <span class="field__label">Телефон</span>
+        <input class="field__input" name="phone" type="tel" maxlength="18"
+               placeholder="+7 (999) 123-45-67" title="11 цифр, начиная с +7 или 8">
+      </label>
+
+      <label class="field">
+        <span class="field__label">Email компании <span class="field__required">*</span></span>
+        <input class="field__input" name="email" type="email" maxlength="255"
+               placeholder="name@company.ru" title="Адрес электронной почты в формате name@company.ru" required>
+      </label>
+
+      <p class="field__note"><span class="field__required">*</span> — обязательные поля</p>
+
+      <div class="partner-form__actions">
+        <button class="button" type="button" id="back-button">Назад</button>
+        <button class="button button--primary" type="submit" id="save-button">Сохранить</button>
+      </div>
+    </form>
+  </main>
+
+  <script src="validation.js"></script>
+  <script src="dialogs.js"></script>
+  <script src="partner.js"></script>
+</body>
+</html>
