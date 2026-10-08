@@ -1,0 +1,5 @@
+# tests 9
+# pass 9
+# fail 0
+#  validation.js      |  97.73 |    79.17 |  100.00 | 86-87
+#  discount.js        | 100.00 |   100.00 |  100.00 | 
