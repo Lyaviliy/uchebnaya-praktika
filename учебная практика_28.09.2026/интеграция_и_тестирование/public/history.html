@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!-- PartnerHistoryWindow — история реализации продукции партнёра.
+       В заголовок скрипт подставляет название партнёра -->
+  <title>CRM: История реализации продукции</title>
+  <link rel="icon" type="image/svg+xml" href="resources/icon.svg">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header class="app-header">
+    <img class="app-logo" src="resources/logo.svg" alt="Логотип компании">
+    <h1 class="app-title" id="history-title">История реализации продукции</h1>
+  </header>
+
+  <nav class="toolbar" aria-label="Действия">
+    <a class="button" href="index.html">Назад</a>
+  </nav>
+
+  <main class="app-main">
+    <p class="status" id="status">Загрузка истории…</p>
+
+    <table class="data-table" id="sales-table" hidden>
+      <thead>
+        <tr>
+          <th scope="col">Наименование продукции</th>
+          <th scope="col" class="data-table__number">Количество (шт.)</th>
+          <th scope="col">Дата продажи</th>
+        </tr>
+      </thead>
+      <tbody id="sales-body"></tbody>
+      <tfoot>
+        <tr>
+          <th scope="row">Итого</th>
+          <td class="data-table__number" id="sales-total"></td>
+          <td id="sales-count"></td>
+        </tr>
+      </tfoot>
+    </table>
+  </main>
+
+  <script src="dialogs.js"></script>
+  <script src="history.js"></script>
+</body>
+</html>

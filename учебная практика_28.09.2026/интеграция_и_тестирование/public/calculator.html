@@ -1,0 +1,64 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>CRM: Калькулятор материалов</title>
+  <link rel="icon" type="image/svg+xml" href="resources/icon.svg">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header class="app-header">
+    <img class="app-logo" src="resources/logo.svg" alt="Логотип компании">
+    <h1 class="app-title">Калькулятор материалов</h1>
+  </header>
+
+  <nav class="toolbar" aria-label="Действия">
+    <a class="button" href="index.html">Назад</a>
+  </nav>
+
+  <main class="app-main">
+    <form class="partner-form" id="calc-form" novalidate>
+      <label class="field">
+        <span class="field__label">Тип продукции</span>
+        <select class="field__input" name="productTypeId">
+          <option value="">Загрузка…</option>
+        </select>
+      </label>
+
+      <label class="field">
+        <span class="field__label">Тип материала</span>
+        <select class="field__input" name="materialTypeId">
+          <option value="">Загрузка…</option>
+        </select>
+      </label>
+
+      <label class="field">
+        <span class="field__label">Количество продукции, шт.</span>
+        <input class="field__input" name="quantity" type="text" inputmode="numeric" placeholder="Целое число больше 0">
+      </label>
+
+      <span></span>
+
+      <label class="field">
+        <span class="field__label">Параметр 1</span>
+        <input class="field__input" name="param1" type="text" inputmode="decimal" placeholder="Положительное число, например 2.5">
+      </label>
+
+      <label class="field">
+        <span class="field__label">Параметр 2</span>
+        <input class="field__input" name="param2" type="text" inputmode="decimal" placeholder="Положительное число, например 1.5">
+      </label>
+
+      <div class="partner-form__actions">
+        <button class="button button--primary" type="submit" id="calc-button">Рассчитать</button>
+      </div>
+
+      <output class="calc-result" id="calc-result" for="calc-form" hidden></output>
+    </form>
+  </main>
+
+  <script src="dialogs.js"></script>
+  <script src="calculator.js"></script>
+</body>
+</html>

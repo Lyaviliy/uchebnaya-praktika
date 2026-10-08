@@ -1,0 +1,9 @@
+[08.10.2026 18:23:26] INFO Сервер запущен: http://localhost:3470
+[08.10.2026 18:23:29] WARN GET /api/partners/9999/sales -> 404 | Error: Партнёр не найден: возможно, его удалили. Вернитесь к списку партнёров.
+[08.10.2026 18:23:30] WARN Расчёт материалов: некорректные данные {"productTypeId":"1","materialTypeId":"1","quantity":"10","param1":"-2","param2":"3"}
+[08.10.2026 18:23:30] WARN Расчёт материалов: некорректные данные {"productTypeId":"1","materialTypeId":"1","quantity":"0","param1":"2","param2":"3"}
+[08.10.2026 18:23:30] WARN Расчёт материалов: некорректные данные {"productTypeId":999,"materialTypeId":1,"quantity":10,"param1":2,"param2":3}
+[08.10.2026 18:23:39] INFO Сервер запущен: http://localhost:3471
+[08.10.2026 18:23:40] ERROR GET /api/partners/1/sales -> 500 | Error: psql: error: connection to server on socket "/var/tmp/pgtest/.s.PGSQL.1" failed: No such file or directory
+	Is the server running locally and accepting connections on that socket?
+

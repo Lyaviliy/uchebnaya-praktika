@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!-- MainWindow — главная форма со списком партнёров -->
+  <title>CRM: Реестр партнеров</title>
+  <link rel="icon" type="image/svg+xml" href="resources/icon.svg">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header class="app-header">
+    <img class="app-logo" src="resources/logo.svg" alt="Логотип компании">
+    <h1 class="app-title">Реестр партнеров</h1>
+  </header>
+
+  <nav class="toolbar" aria-label="Действия">
+    <a class="button button--primary" href="partner.html" id="add-partner">Добавить партнера</a>
+    <button class="button" type="button" id="edit-partner" disabled>Изменить</button>
+    <button class="button" type="button" id="sales-history" disabled>История продаж</button>
+    <a class="button toolbar__right" href="calculator.html" id="open-calculator">Калькулятор материалов</a>
+  </nav>
+
+  <main class="app-main">
+    <p class="hint">Выберите партнёра щелчком, затем «Изменить» или «История продаж». Двойной щелчок открывает карточку сразу.</p>
+    <p class="status" id="status">Загрузка партнёров…</p>
+    <ul class="partner-list" id="partner-list" role="listbox" aria-label="Партнёры"></ul>
+  </main>
+
+  <template id="partner-card">
+    <li class="partner-card" tabindex="0" role="option" aria-selected="false">
+      <div class="partner-card__info">
+        <p class="partner-card__title"></p>
+        <p class="partner-card__director"></p>
+        <p class="partner-card__phone"></p>
+        <p class="partner-card__rating"></p>
+      </div>
+      <p class="partner-card__discount"></p>
+    </li>
+  </template>
+
+  <script src="dialogs.js"></script>
+  <script src="main.js"></script>
+</body>
+</html>
