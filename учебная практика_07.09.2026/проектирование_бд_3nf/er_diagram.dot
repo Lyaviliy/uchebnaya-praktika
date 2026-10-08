@@ -1,0 +1,58 @@
+digraph ER {
+  graph [rankdir=LR, fontname="DejaVu Sans", label="ER-диаграмма: учёт партнёров и истории продаж (3НФ)", labelloc=t, fontsize=18, pad=0.4, nodesep=0.6, ranksep=1.1];
+  node  [shape=plain, fontname="DejaVu Sans", fontsize=11];
+  edge  [fontname="DejaVu Sans", fontsize=10, arrowhead=crow, arrowtail=tee, dir=both, color="#444444"];
+
+  partner_types [label=<
+  <table border="0" cellborder="1" cellspacing="0" cellpadding="5">
+    <tr><td colspan="3" bgcolor="#2f5d8a"><font color="white"><b>partner_types</b></font></td></tr>
+    <tr><td><b>PK</b></td><td>id</td><td port="id">SERIAL</td></tr>
+    <tr><td>UQ</td><td>name</td><td>VARCHAR(50) NOT NULL</td></tr>
+  </table>>];
+
+  partners [label=<
+  <table border="0" cellborder="1" cellspacing="0" cellpadding="5">
+    <tr><td colspan="3" bgcolor="#2f5d8a"><font color="white"><b>partners</b></font></td></tr>
+    <tr><td><b>PK</b></td><td>id</td><td port="id">SERIAL</td></tr>
+    <tr><td port="type">FK</td><td>partner_type_id</td><td>INT NOT NULL</td></tr>
+    <tr><td></td><td>name</td><td>VARCHAR(255) NOT NULL</td></tr>
+    <tr><td>UQ</td><td>inn</td><td>VARCHAR(12) NOT NULL</td></tr>
+    <tr><td></td><td>director_name</td><td>VARCHAR(255) NOT NULL</td></tr>
+    <tr><td>UQ</td><td>email</td><td>VARCHAR(255) NOT NULL</td></tr>
+    <tr><td></td><td>phone</td><td>VARCHAR(20) NOT NULL</td></tr>
+    <tr><td></td><td>legal_address</td><td>VARCHAR(500) NOT NULL</td></tr>
+    <tr><td></td><td>rating</td><td>INT NOT NULL (≥0)</td></tr>
+  </table>>];
+
+  product_types [label=<
+  <table border="0" cellborder="1" cellspacing="0" cellpadding="5">
+    <tr><td colspan="3" bgcolor="#2f5d8a"><font color="white"><b>product_types</b></font></td></tr>
+    <tr><td><b>PK</b></td><td>id</td><td port="id">SERIAL</td></tr>
+    <tr><td>UQ</td><td>name</td><td>VARCHAR(100) NOT NULL</td></tr>
+  </table>>];
+
+  products [label=<
+  <table border="0" cellborder="1" cellspacing="0" cellpadding="5">
+    <tr><td colspan="3" bgcolor="#2f5d8a"><font color="white"><b>products</b></font></td></tr>
+    <tr><td><b>PK</b></td><td>id</td><td port="id">SERIAL</td></tr>
+    <tr><td port="type">FK</td><td>product_type_id</td><td>INT NOT NULL</td></tr>
+    <tr><td>UQ</td><td>article</td><td>VARCHAR(50) NOT NULL</td></tr>
+    <tr><td></td><td>name</td><td>VARCHAR(255) NOT NULL</td></tr>
+    <tr><td></td><td>min_price</td><td>NUMERIC(10,2) NOT NULL (≥0)</td></tr>
+  </table>>];
+
+  sales_history [label=<
+  <table border="0" cellborder="1" cellspacing="0" cellpadding="5">
+    <tr><td colspan="3" bgcolor="#2f5d8a"><font color="white"><b>sales_history</b></font></td></tr>
+    <tr><td><b>PK</b></td><td>id</td><td port="id">SERIAL</td></tr>
+    <tr><td port="partner">FK</td><td>partner_id</td><td>INT NOT NULL</td></tr>
+    <tr><td port="product">FK</td><td>product_id</td><td>INT NOT NULL</td></tr>
+    <tr><td></td><td>quantity</td><td>INT NOT NULL (&gt;0)</td></tr>
+    <tr><td></td><td>sale_date</td><td>DATE NOT NULL</td></tr>
+  </table>>];
+
+  partner_types:id:e -> partners:type:w [label="1 : N"];
+  product_types:id:e -> products:type:w [label="1 : N"];
+  partners:id:e -> sales_history:partner:w [label="1 : N"];
+  products:id:e -> sales_history:product:w [label="1 : N"];
+}
