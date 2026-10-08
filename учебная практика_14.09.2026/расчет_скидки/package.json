@@ -1,0 +1,9 @@
+{
+  "name": "partner-discount",
+  "version": "1.0.0",
+  "description": "Расчёт процента скидки партнёра",
+  "main": "src/discount.js",
+  "scripts": {
+    "test": "node --test --experimental-test-coverage \"test/*.test.js\""
+  }
+}

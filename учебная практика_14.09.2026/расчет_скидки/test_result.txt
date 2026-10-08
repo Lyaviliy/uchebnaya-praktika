@@ -1,0 +1,6 @@
+# tests 4
+# pass 4
+# fail 0
+#  discount.js      | 100.00 |   100.00 |  100.00 | 
+#  discount.test.js | 100.00 |   100.00 |  100.00 | 
+# all files         | 100.00 |   100.00 |  100.00 | 

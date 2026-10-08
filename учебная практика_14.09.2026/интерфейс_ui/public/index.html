@@ -1,0 +1,35 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>CRM: Список партнеров и скидок</title>
+  <link rel="icon" type="image/svg+xml" href="resources/icon.svg">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header class="app-header">
+    <img class="app-logo" src="resources/logo.svg" alt="Логотип компании">
+    <h1 class="app-title">CRM: Список партнеров и скидок</h1>
+  </header>
+
+  <main class="app-main">
+    <p class="status" id="status">Загрузка партнёров…</p>
+    <ul class="partner-list" id="partner-list"></ul>
+  </main>
+
+  <template id="partner-card">
+    <li class="partner-card">
+      <div class="partner-card__info">
+        <p class="partner-card__title"></p>
+        <p class="partner-card__director"></p>
+        <p class="partner-card__phone"></p>
+        <p class="partner-card__rating"></p>
+      </div>
+      <p class="partner-card__discount"></p>
+    </li>
+  </template>
+
+  <script src="app.js"></script>
+</body>
+</html>

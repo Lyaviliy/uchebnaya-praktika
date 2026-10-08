@@ -1,0 +1,12 @@
+{
+  "name": "partner-discount-db",
+  "version": "1.0.0",
+  "description": "Получение объёма продаж партнёра из PostgreSQL и расчёт скидки",
+  "scripts": {
+    "db:init": "node scripts/initDb.js",
+    "demo": "node scripts/demoDiscounts.js"
+  },
+  "dependencies": {
+    "pg": "^8.13.0"
+  }
+}

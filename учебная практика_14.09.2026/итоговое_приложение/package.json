@@ -1,0 +1,19 @@
+{
+  "name": "crm-partners-discounts",
+  "version": "1.0.0",
+  "description": "CRM: список партнёров и скидок (учебная практика 14.09.2026)",
+  "main": "src/server.js",
+  "scripts": {
+    "start": "node src/server.js",
+    "db:init": "node scripts/initDb.js",
+    "demo": "node scripts/demoDiscounts.js",
+    "test": "node --test --experimental-test-coverage \"test/*.test.js\"",
+    "stress": "node scripts/stressTest.js"
+  },
+  "dependencies": {
+    "pg": "^8.13.0"
+  },
+  "engines": {
+    "node": ">=20"
+  }
+}
